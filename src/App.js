@@ -51,9 +51,9 @@ class App extends Component {
             <button type='submit'>Search</button>
           </form>
           <div className='tweets'>
-            {this.state.tweets.map((tweet) => {
+           */ {this.state.tweets.map((tweet) => {
               return <p key={tweet}>{tweet}</p>;
-            })}
+            })} /*
           </div>
         </div>
         <div className='New search'>
