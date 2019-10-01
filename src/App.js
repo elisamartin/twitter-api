@@ -27,6 +27,9 @@ class App extends Component {
       .then((res) => {
         this.setState(() => ({ tweets: res.data.text }));
       })
+      .then((res) = {
+        console.log('this.state', this.state, 'res.data', res.data);
+      })
       .catch((err) => console.log(err));
   };
 
