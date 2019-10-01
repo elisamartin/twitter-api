@@ -59,7 +59,7 @@ class App extends Component {
           </div>
         </div>
         <div className='New search'>
-          <p>New Search. Write a new word to get the last 15 tweets containing it</p>
+          <p>New Search. </p>
         </div>
       </div>
     );
