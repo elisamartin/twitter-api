@@ -24,9 +24,8 @@ class App extends Component {
     e.preventDefault();
     axios()
       .get(`https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${newSearch.searchUser}&count=3`)
-      .then((res) => {
-        this.setState(() => ({ tweets: res.data.text }));
-      })
+      .then((res)  => console.log('res', res))
+      .then((res) => this.setState(() => ({ tweets: res.data.text })))
       .catch((err) => console.log(err));
   };
 
