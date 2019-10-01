@@ -23,9 +23,13 @@ class App extends Component {
   fetchUserTweetsHandler = (e, newSearch) => {
     e.preventDefault();
     axios()
-      .get(`https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${newSearch.searchUser}&count=3`)
-      .then((res)  => console.log('res', res))
-      .then((res) => this.setState({ tweets: res.data.text }))
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${newSearch.searchUser}&count=3`
+      )
+      .then((res) => console.log('res', res))
+      .then((res) => {
+        this.setState(() => ({ tweets: res.data }));
+      })
       .catch((err) => console.log(err));
   };
 
@@ -49,9 +53,9 @@ class App extends Component {
             <button type='submit'>Search</button>
           </form>
           <div className='tweets'>
-      {/* {this.state.tweets.map((tweet) => {
-              return <p key={tweet}>{tweet}</p>;
-            })} */}
+            {this.state.tweets.map((tweet) => {
+              return <p key={tweet.id}>{tweet.text}</p>;
+            })}
           </div>
         </div>
         <div className='New search'>
