@@ -23,7 +23,7 @@ class App extends Component {
   fetchUserTweetsHandler = (e, newSearch) => {
     e.preventDefault();
     axios()
-      .get(`https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${newSearch.searchUser}&count=3`)
+      .get(`https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${newSearch.searchUser}&count=3`)
       .then((res) => {
         this.setState(() => ({ tweets: res.data.text }));
       })
