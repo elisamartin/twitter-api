@@ -4,7 +4,7 @@ export default function() {
   const instance = axios.create({
     headers: {
       Authorization:
-        'Bearer WUpLZnN6UzR5ZkVMemY5dHJ4RHN5eWt6aDowQ1c0OEtENUpGSGN0WVNaUkxPNjhLdkpQOEZteFpmam41Z1h0VVZhVnhSeVJQWUM2dA=='
+        'Bearer AAAAAAAAAAAAAAAAAAAAAG6vAAEAAAAA8wS97F1m5RQw%2Bt7hLfeROd9U%2FiA%3DYDiYfkRxGIxU9V3MtlbeVU7RFAxizQsZvwqrIVIXx6Fh8EMzIW'
     }
   });
 
