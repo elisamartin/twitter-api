@@ -6,7 +6,9 @@ class App extends Component {
     super(props);
     this.state = {
       searchUser: '',
-      tweets: []
+      userTweets: [],
+      searchWord: '',
+      wordTweets: [] 
     };
   }
 
@@ -14,9 +16,17 @@ class App extends Component {
     e.preventDefault();
     const newSearch = this.state;
     this.fetchUserTweetsHandler(e, newSearch);
-    console.log(newSearch);
     this.setState({
-      tweets: []
+      userTweets: []
+    });
+  };
+
+  fetchWordTweets = (e) => {
+    e.preventDefault();
+    const newSearch = this.state;
+    this.fetchWordTweetsHandler(e, newSearch);
+    this.setState({
+      wordTweets: []
     });
   };
 
@@ -28,7 +38,20 @@ class App extends Component {
       )
       .then((res) => {
         console.log('res', res);
-        this.setState(() => ({ tweets: res.data }));
+        this.setState(() => ({ userTweets: res.data }));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  fetchWordTweetsHandler = (e, newSearch) => {
+    e.preventDefault();
+    axios()
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=${newSearch.searchWord}&result_type=recent&count=3`
+      )
+      .then((res) => {
+        console.log('res', res);
+        this.setState(() => ({ wordTweets: res.data.statuses }));
       })
       .catch((err) => console.log(err));
   };
@@ -53,13 +76,27 @@ class App extends Component {
             <button type='submit'>Search</button>
           </form>
           <div className='tweets'>
-            {this.state.tweets.map((tweet) => {
+            {this.state.userTweets.map((tweet) => {
               return <p key={tweet.id}>{tweet.text}</p>;
             })}
           </div>
         </div>
-        <div className='New search'>
-          <p>New Search. </p>
+        <div className='Word search'>
+          <form onSubmit={this.fetchWordTweets}>
+            <input
+              onChange={this.handleInputChange}
+              type='search'
+              placeholder='One word search'
+              value={this.state.searchWord}
+              name='searchWord'
+            />
+            <button type='submit'>Search</button>
+          </form>
+          <div className='tweets'>
+            {this.state.wordTweets.map((tweet) => {
+              return <p key={tweet.id}>{tweet.text}</p>;
+            })}
+          </div>
         </div>
       </div>
     );
