@@ -12,13 +12,14 @@ const AppStyled = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 `;
 const Search = styled.div`
   box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.25);
   width: 450px;
   padding: 30px 25px;
+  margin-top: 40px;
 `;
 const Input = styled.input`
   width: 100%;
